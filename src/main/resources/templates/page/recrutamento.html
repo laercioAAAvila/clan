@@ -1,10 +1,47 @@
 <!DOCTYPE html>
 <html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="fragments/base :: head(Recrutamento)"/>
+<head th:replace="fragments/base :: head(Recrutamento)" />
 
-<body >
-	<nav th:insert="fragments/base :: nav"/>
-	<h1>pagina recrutamento</h1>
+<body>
+	<nav th:insert="fragments/base :: nav" />
+
+	<div class="card">
+		<div class="card-header">Formulário</div>
+		<div class="card-body">
+			<h5 class="card-title">Formulário de Recrutamento</h5>
+			<form th:action="@{/recrutamento/save}" th:object="${recrutamentoModel}" method="POST">
+				<div class="mb-3">
+					<label for="nome" class="form-label">Nome completo<span
+						style="color: red">*</span></label> <input type="text"
+						class="form-control" name="nome"  id="nome" required="required">
+				</div>
+				<div class="mb-3">
+					<label for="inputNickname" class="form-label">Nick no jogo<span
+						style="color: red">*</span></label> <input type="text"
+						class="form-control" name="nickname" id="nickname" required="required">
+				</div>
+				<div class="mb-3">
+					<label for="whatsapp" class="form-label">Whatsapp<span
+						style="color: red">*</span></label> <input type="text"
+						class="form-control" name="whatsapp" id="whatsapp" placeholder="(22) 91111-2222"
+						required="required">
+				</div>
+				<div class="mb-3">
+					<label for="dataNascimento" class="form-label">Data de
+						nascimento<br>
+					</label>
+					<div>
+						<input type="date" name="dataNascimento" id="dataNascimento">
+					</div>
+				</div>
+				<div class="mb-3">
+					<label for="email" class="form-label">Email</label> <input
+						type="text" class="form-control" name="email" id="email">
+				</div>
+				<button type="submit" class="btn btn-primary">Enviar</button>
+				</form>
+		</div>
+	</div>
 </body>
 </html>
