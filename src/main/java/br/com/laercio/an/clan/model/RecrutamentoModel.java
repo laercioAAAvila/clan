@@ -7,6 +7,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import br.com.laercio.an.clan.exception.RecrutamentoException;
+
 @Entity(name = "recrutas")
 public class RecrutamentoModel {
 
@@ -57,8 +59,10 @@ public class RecrutamentoModel {
 	}
 
 	public void setDataNascimento(String dataNascimento) {
+		if (dataNascimento == null || dataNascimento.isEmpty() || dataNascimento.isBlank()) {
+			throw new RecrutamentoException("input dataNacimento vazio ou null");
+		}
 		LocalDate ld = LocalDate.parse(dataNascimento);
-		
 		this.dataNascimento = ld;
 	}
 
