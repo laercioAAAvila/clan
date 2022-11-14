@@ -13,26 +13,18 @@ import br.com.laercio.an.clan.service.RecrutamentoService;
 
 @Controller
 public class RecrutamentoController {
-	
+
 	@Autowired
 	private RecrutamentoService recrutamentoService;
-	
-	@RequestMapping (method = RequestMethod.GET, value = "/recrutamento")
+
+	@RequestMapping(method = RequestMethod.GET, value = "/recrutamento")
 	public String recrutamento() {
 		return "page/recrutamento";
 	}
-	
-	
-	
+
 	@RequestMapping(method = RequestMethod.POST, value = "/recrutamento/save")
 	public String formulario(@ModelAttribute("recrutamentoModel") RecrutamentoModel recrutamentoModel) {
-		try {
-			recrutamentoService.saveRecrutamento(recrutamentoModel);
-		} catch (RecrutamentoException e) {
-			System.out.println(e);
-			return "page/recrutamento";
-		}
-		
+		recrutamentoService.saveRecrutamento(recrutamentoModel);
 		return "page/recrutamento";
 	}
 }
